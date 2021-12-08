@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="sBTemPsy" nsURI="http://www.svv.lu/offline/SBTemPsy" nsPrefix="sBTemPsy">
+  <eClassifiers xsi:type="ecore:EClass" name="PropertiesBlock">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//AbstractProperty" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractProperty"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Property" eSuperTypes="#//AbstractProperty">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scope" lowerBound="1" eType="#//Scope"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pattern" lowerBound="1"
+        eType="#//Pattern" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NotProperty" eSuperTypes="#//AbstractProperty">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="#//AbstractProperty"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OrProperty" eSuperTypes="#//AbstractProperty">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property1" lowerBound="1"
+        eType="#//AbstractProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property2" lowerBound="1"
+        eType="#//AbstractProperty" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AndProperty" eSuperTypes="#//AbstractProperty">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property1" lowerBound="1"
+        eType="#//AbstractProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property2" lowerBound="1"
+        eType="#//AbstractProperty" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Signal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="javaExpression" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="requiredInterpolation"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Pattern"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SimplePattern" eSuperTypes="#//Pattern"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataAssertion" eSuperTypes="#//SimplePattern"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Spike" eSuperTypes="#//SimplePattern">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occSpk" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="signal" lowerBound="1"
+        eType="#//Signal" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spkFeat" lowerBound="1"
+        upperBound="-1" eType="#//SpikeFeature" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Oscillation" eSuperTypes="#//SimplePattern">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="signal" lowerBound="1"
+        eType="#//Signal" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="oscFeat" lowerBound="1"
+        upperBound="-1" eType="#//OscillationsFeature" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Rise" eSuperTypes="#//SimplePattern">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="signal" eType="#//Signal"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rfMonotonicity" eType="#//MonotonicityType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetValue" eType="#//Value"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Fall" eSuperTypes="#//SimplePattern">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="signal" eType="#//Signal"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rfMonotonicity" eType="#//MonotonicityType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetValue" eType="#//Value"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Overshoot" eSuperTypes="#//SimplePattern">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="signal" eType="#//Signal"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetValue" eType="#//Value"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ouMonotonicity" eType="#//MonotonicityType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="maximumValue" eType="#//Value"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Undershoot" eSuperTypes="#//SimplePattern">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="signal" eType="#//Signal"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetValue" eType="#//Value"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ouMonotonicity" eType="#//MonotonicityType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="maximumValue" eType="#//Value"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ComplexPattern" eSuperTypes="#//Pattern"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Order" eSuperTypes="#//ComplexPattern">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cause" lowerBound="1" eType="#//Pattern"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="causeEffectDistance" eType="#//TimeDistance"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="effect" lowerBound="1"
+        eType="#//Effects" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Scope"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Globally" eSuperTypes="#//Scope"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UniScope" eSuperTypes="#//Scope"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Before" eSuperTypes="#//UniScope">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="boundary" lowerBound="1"
+        eType="#//Boundary" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PunctualScope" eSuperTypes="#//UniScope">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="absolute" lowerBound="1"
+        eType="#//Boundary" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="After" eSuperTypes="#//UniScope">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="boundary" lowerBound="1"
+        eType="#//Boundary" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BiScope" eSuperTypes="#//Scope"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BetweenAnd" eSuperTypes="#//BiScope">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="boundary1" lowerBound="1"
+        eType="#//Boundary" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="boundary2" lowerBound="1"
+        eType="#//Boundary" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AfterUntil" eSuperTypes="#//BiScope">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="boundary1" lowerBound="1"
+        eType="#//Boundary" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="boundary2" lowerBound="1"
+        eType="#//Boundary" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractCondition"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OrCondition" eSuperTypes="#//AbstractCondition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition1" lowerBound="1"
+        eType="#//AbstractCondition" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition2" lowerBound="1"
+        eType="#//AbstractCondition" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AndCondition" eSuperTypes="#//AbstractCondition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition1" lowerBound="1"
+        eType="#//AbstractCondition" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition2" lowerBound="1"
+        eType="#//AbstractCondition" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Assertion" eSuperTypes="#//AbstractCondition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="signal" lowerBound="1"
+        eType="#//Signal" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dAPred" lowerBound="1"
+        eType="#//Predicate" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StateAssertion" eSuperTypes="#//DataAssertion">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="signal" lowerBound="1"
+        eType="#//Signal" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="daBehaviorSc1" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dAPred" lowerBound="1"
+        eType="#//Predicate" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EventAssertion" eSuperTypes="#//DataAssertion">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
+        eType="#//AbstractCondition" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Boundary">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="absoluteB" eType="#//Value"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eventB" eType="#//SimplePattern"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SpikeFeature">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="spkFName" lowerBound="1"
+        eType="#//SpikeFeatureName"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sFPred" lowerBound="1"
+        eType="#//Predicate" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OscillationsFeature">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="oscFName" lowerBound="1"
+        eType="#//OscillationsFeatureName"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="oscFPred" lowerBound="1"
+        eType="#//Predicate" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Effects">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="effectsPList" lowerBound="1"
+        upperBound="-1" eType="#//Pattern" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Predicate">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rOp" eType="#//RelationalOperator"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Value"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Value">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="val" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TimeDistance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="comparingOperator" eType="#//ComparingOperator"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="boundary" eType="#//Value"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ComparingOperator">
+    <eLiterals name="ATLEAST" literal="at least"/>
+    <eLiterals name="ATMOST" value="1" literal="at most"/>
+    <eLiterals name="EXACTLY" value="2" literal="exactly"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RelationalOperator">
+    <eLiterals name="GRTEQ" literal=">="/>
+    <eLiterals name="GRT" value="1" literal=">"/>
+    <eLiterals name="LESSEQ" value="2" literal="&lt;="/>
+    <eLiterals name="LESS" value="3" literal="&lt;"/>
+    <eLiterals name="EQL" value="4" literal="=="/>
+    <eLiterals name="DIFF" value="5" literal="&lt;>"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MonotonicityType">
+    <eLiterals name="MONOTONICITY" literal="monotonically"/>
+    <eLiterals name="NOMONOTONICITY" value="1" literal="not monotonically"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SpikeFeatureName">
+    <eLiterals name="a" literal="amplitude"/>
+    <eLiterals name="w" value="1" literal="width"/>
+    <eLiterals name="sp1" value="2" literal="first_slope"/>
+    <eLiterals name="sp2" value="3" literal="second_slope"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="OscillationsFeatureName">
+    <eLiterals name="a" literal="peakToPeakAmplitude"/>
+    <eLiterals name="w" literal="period"/>
+  </eClassifiers>
+</ecore:EPackage>

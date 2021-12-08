@@ -1,0 +1,12 @@
+TD-SB-TemPsy is © 2021 University of Luxembourg
+and is distributed under the Apache license, version 2.0 (read https://www.apache.org/licenses/LICENSE-2.0 for details)
+
+Authors:
+  - Chaima Boufaied, chaima.boufaied@uni.lu, University of Luxembourg.
+  - Claudio Menghi, claudio.menghi@uni.lu, University of Luxembourg.
+  - Domenico Bianculli, domenico.bianculli@uni.lu, University of Luxembourg. 
+  - Lionel Briand, lionel.briand@uni.lu, University of Luxembourg.
+
+
+TD-SB-TemPsy includes the following component:
+  - Eclipse OCL (Copyright © 2016 Edward Willink based on a work by Adolfo Sanchez-Barbudo Herrera, Adolfo S and Christian W. Damus, licensed under Eclipse Public License - v 2.0; read COPYING for details)

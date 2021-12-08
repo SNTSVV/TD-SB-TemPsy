@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="diagnostics" nsURI="http://www.svv.lu/offline/Diagnostics" nsPrefix="diagnostics">
+  <eClassifiers xsi:type="ecore:EClass" name="DiagnosticsInformation" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="signalName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="violationType" lowerBound="1"
+        eType="#//ViolationType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ViolationType">
+    <eLiterals name="i_dp_becomes_2" value="2"/>
+    <eLiterals name="i_dp_becomes_1" value="1"/>
+    <eLiterals name="i_dp_assert_1"/>
+    <eLiterals name="i_dp_becomes_3" value="3"/>
+    <eLiterals name="i_dp_rises_1" value="4" literal="i_dp_rises_1"/>
+    <eLiterals name="i_dp_rises_2" value="5"/>
+    <eLiterals name="i_dp_rises_3" value="6"/>
+    <eLiterals name="i_dp_rises_4" value="7"/>
+    <eLiterals name="i_dp_falls_1" value="8"/>
+    <eLiterals name="i_dp_falls_2" value="9"/>
+    <eLiterals name="i_dp_falls_3" value="10"/>
+    <eLiterals name="i_dp_falls_4" value="11"/>
+    <eLiterals name="i_dp_overshoots_1" value="12"/>
+    <eLiterals name="i_dp_overshoots_2" value="13"/>
+    <eLiterals name="i_dp_overshoots_3" value="14"/>
+    <eLiterals name="i_dp_overshoots_4" value="15"/>
+    <eLiterals name="i_dp_undershoots_1" value="16"/>
+    <eLiterals name="i_dp_undershoots_2" value="17"/>
+    <eLiterals name="i_dp_undershoots_3" value="18"/>
+    <eLiterals name="i_dp_undershoots_4" value="19"/>
+    <eLiterals name="i_dp_spike_1" value="20"/>
+    <eLiterals name="i_dp_spike_2" value="21"/>
+    <eLiterals name="i_dp_spike_3" value="23"/>
+    <eLiterals name="i_dp_spike_4" value="24"/>
+    <eLiterals name="i_dp_oscillation_1" value="25"/>
+    <eLiterals name="i_dp_oscillation_2" value="26"/>
+    <eLiterals name="i_dp_oscillation_3" value="27"/>
+    <eLiterals name="i_dp_oscillation_4" value="28"/>
+    <eLiterals name="i_dp_oscillation_5" value="29"/>
+    <eLiterals name="i_dp_oscillation_6" value="30"/>
+    <eLiterals name="i_dp_oscillation_7" value="31"/>
+    <eLiterals name="i_dp_if_then_1" value="32"/>
+    <eLiterals name="i_dp_if_then_2" value="33"/>
+    <eLiterals name="NotSupported" value="34"/>
+    <eLiterals name="i_dp_a_at_1" value="35"/>
+    <eLiterals name="i_dp_a_bef_1" value="36"/>
+    <eLiterals name="i_dp_a_aft_1" value="37"/>
+    <eLiterals name="i_dp_a_bet_1" value="38"/>
+    <eLiterals name="i_dp_e_bef_1" value="39"/>
+    <eLiterals name="i_dp_e_aft_1" value="40"/>
+    <eLiterals name="i_dp_e_bet_1" value="41"/>
+    <eLiterals name="i_becomes" value="42"/>
+    <eLiterals name="i_spike" value="43"/>
+    <eLiterals name="i_oscillation" value="44"/>
+    <eLiterals name="i_rises" value="45"/>
+    <eLiterals name="i_falls" value="46"/>
+    <eLiterals name="i_overshoots" value="47"/>
+    <eLiterals name="i_undershoots" value="48"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntervalDI" eSuperTypes="#//DiagnosticsInformation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="leftBoundary" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rightBoundary" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="featOrSigValue" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RecordDI" eSuperTypes="#//DiagnosticsInformation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="records" lowerBound="1"
+        upperBound="-1" eType="#//Record"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Record">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="signalValue" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+</ecore:EPackage>
