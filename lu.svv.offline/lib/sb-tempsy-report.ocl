@@ -175,13 +175,13 @@ def: checkCondition(trace:OrderedSet(trace::TraceElement), t:trace::TraceElement
 -- auxiliary functions for event-based conditions  
 def: keepTrackOfEventVRecord(trace:OrderedSet(trace::TraceElement), tl:Real,tu:Real,assertion:sBTemPsy::Assertion):trace::TraceElement=
 	let result:Tuple(index:Integer, violatedPred:Integer, timestampOfViolation:trace::TraceElement) = trace->iterate(elem:trace::TraceElement;
-	  iter:Tuple(index:Integer,violatedPred:Integer,timestampOfViolation:trace::TraceElement) = Tuple{index:Integer=0 , violatedPred:Integer=0,timestampOfViolation:trace::TraceElement=trace->first()} -- it starts from the first index of the trace
+	  iter:Tuple(index:Integer,violatedPred:Integer,timestampOfViolation:trace::TraceElement) = Tuple{index:Integer=0 , violatedPred:Integer=0,timestampOfViolation:trace::TraceElement=tl} -- it starts from the first index of the trace
 	  | 
 	let currentIndex:Integer = iter.index + 1 in
 	if iter.violatedPred=1 then  -- if the predicate has been already violated, then stop inner conditions and go till end of trace to report that first seen violation
 		iter 
 	else	
-		if reportPredicate(trace, elem, assertion)=true then 
+		if reportPredicate(trace, elem, assertion)=true and elem.generationTime >= tl then 
 			Tuple{index:Integer = currentIndex, violatedPred:Integer=1,timestampOfViolation:trace::TraceElement=elem} 
 		else 
 			Tuple{index:Integer = currentIndex, violatedPred:Integer=iter.violatedPred,timestampOfViolation:trace::TraceElement=iter.timestampOfViolation} 
